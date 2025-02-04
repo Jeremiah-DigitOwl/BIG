@@ -9,16 +9,21 @@ function BigToShortDecimalString(_x)
         " M",  //million
         " B",  //billion
         " T",  //trillion
-        " Qd", //quadrillion
-        " Qt", //quintillion
+        " Q",  //quadrillion
+        " Qi", //quintillion
         " Sx", //sextillion
         " Sp", //septillion
         " Oc", //octillion
         " No", //nonillion
         " Dc", //decillion
         " Un", //undecillion
-        " Du", //duodecillion
+        " Dd", //duodecillion
         " Td", //tredecillion
+		" Qt", //quattuordecillion
+		" Qd", //quindecillion
+		" Sd", //sexdecillion
+		" St", //septendecillion
+		" Od", //octodecillion
     ];
     
 	var _string = BigToDecimalString(_x);
