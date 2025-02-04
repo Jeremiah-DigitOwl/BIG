@@ -12,7 +12,12 @@
 
 function BigAdd(_a, _b, _writeTo = undefined)
 {
+    static _maximum = BigMaximum();
+    
     __BIG_HANDLE_RESULT_PRE
+    
+    if(BigIsZero(_a) && BigIsZero(_b)) return _out;
+    if(BigCompare(_b, BigSub(BigMaximum(), _a, 0))) return BigCopyTo(_maximum,_out);
     
 	var _temp = 0;
 	var _i = 0;

@@ -11,21 +11,26 @@
 
 function BigAddInt32(_x, _int, _writeTo = undefined)
 {
+    static _maximum = BigMaximum();
+	
     __BIG_HANDLE_RESULT_PRE_MONO
     
-	var _temp = _x[0] + _int;
-	var _carry = (_temp > __BIG_MAX_VALUE);
-	_out[@ 0] = _temp & __BIG_MAX_VALUE;
+    if(BigIsZero(_x) && _int==0) return _out;
+    if(BigCompare(_x, BigSubInt32(BigMaximum(), _int, 0))) return BigCopyTo(_maximum,_out);
     
-	var _i = 1;
-	repeat(BIG_MAX_WORDS - 1)
-	{
-	    var _temp = _x[_i] + _carry;
-	    _carry = (_temp > __BIG_MAX_VALUE);
-	    _out[@ _i] = _temp & __BIG_MAX_VALUE;
+    var _temp = _x[0] + _int;
+    var _carry = (_temp > __BIG_MAX_VALUE);
+    _out[@ 0] = _temp & __BIG_MAX_VALUE;
+    
+    var _i = 1;
+    repeat(BIG_MAX_WORDS - 1)
+    {
+        var _temp = _x[_i] + _carry;
+        _carry = (_temp > __BIG_MAX_VALUE);
+        _out[@ _i] = _temp & __BIG_MAX_VALUE;
         
-	    ++_i;
-	}
+        ++_i;
+    }
     
-	return _out;
+    return _out;
 }
